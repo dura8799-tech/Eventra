@@ -1,155 +1,2401 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eventra | منصة تنظيم المناسبات</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-    nav {
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    nav a {
-      color: #1e3c72;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 16px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-    nav a:hover {
-      background: #eef2f5;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .hero {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-    }
-    .hero h2 {
-      color: #1e3c72;
-      margin-bottom: 1rem;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      border-top: 4px solid #2a5298;
-    }
-    .card h3 {
-      margin-bottom: 0.5rem;
-      color: #1e3c72;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 10px 20px;
-      background: #2a5298;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-    .btn:hover {
-      background: #1e3c72;
-    }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: #1e3c72;
-      color: white;
-      margin-top: 3rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventra | منصة تنظيم المناسبات</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --gold:#d8b45a;
+ --gold2:#f3d987;
+ --bg:#0f0c13;
+ --card:#211a27;
+ --dark:#17121c;
+ --text:#fff;
+ --muted:#aaa2ae;
+ --line:rgba(216,180,90,.25)
+}
+body{
+ font-family:Arial,Tahoma,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.7
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{max-width:1200px;margin:auto;padding:0 18px}
+
+header{
+ position:sticky;
+ top:0;
+ z-index:1000;
+ background:#100d14;
+ border-bottom:1px solid var(--line)
+}
+.nav{
+ max-width:1200px;
+ margin:auto;
+ padding:14px 18px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px
+}
+.logo{
+ color:var(--gold2);
+ font-size:27px;
+ font-weight:bold;
+ text-decoration:none
+}
+.links{
+ display:flex;
+ gap:25px;
+ list-style:none
+}
+.links a{
+ color:#fff;
+ text-decoration:none
+}
+.links a:hover{color:var(--gold2)}
+.nav-actions{display:flex;gap:8px}
+.nav-btn,.outline{
+ background:transparent;
+ color:#fff;
+ border:1px solid var(--line);
+ border-radius:10px;
+ padding:9px 14px
+}
+.menu{
+ display:none;
+ background:transparent;
+ border:1px solid var(--line);
+ color:#fff;
+ border-radius:8px;
+ padding:6px 11px;
+ font-size:20px
+}
+
+.hero{
+ min-height:570px;
+ display:flex;
+ align-items:center;
+ background:
+ radial-gradient(circle at 75% 35%,rgba(216,180,90,.22),transparent 38%)
+}
+.hero-content{padding:90px 18px}
+.gold{color:var(--gold2)}
+.hero h1{
+ font-size:clamp(45px,7vw,78px);
+ line-height:1.2;
+ margin:10px 0
+}
+.hero p{
+ max-width:650px;
+ color:#c8c1cb;
+ font-size:18px;
+ margin:18px 0 28px
+}
+.actions{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap
+}
+.btn{
+ border:0;
+ border-radius:11px;
+ padding:12px 22px;
+ font-weight:bold
+}
+.gold-btn{
+ background:linear-gradient(135deg,var(--gold2),var(--gold));
+ color:#171218
+}
+
+section{padding:65px 18px}
+.dark{background:var(--dark)}
+.title{
+ text-align:center;
+ margin-bottom:35px
+}
+.title small{color:var(--gold2)}
+.title h2{
+ font-size:34px;
+ margin:5px 0
+}
+.title p{color:var(--muted)}
+
+.categories{
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ gap:14px
+}
+.category{
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:15px;
+ padding:20px 8px;
+ text-align:center;
+ transition:.2s
+}
+.category:hover{
+ transform:translateY(-4px);
+ border-color:var(--gold)
+}
+.category-icon{
+ display:block;
+ font-size:32px
+}
+
+.search{
+ max-width:1050px;
+ margin:auto;
+ background:var(--card);
+ border:1px solid var(--line);
+ padding:12px;
+ border-radius:15px;
+ display:flex;
+ gap:8px
+}
+.search input,.search select{
+ flex:1;
+ background:#100d14;
+ color:#fff;
+ border:1px solid #3b3340;
+ border-radius:9px;
+ padding:11px;
+ outline:none
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:20px
+}
+.card{
+ background:var(--card);
+ border:1px solid rgba(255,255,255,.08);
+ border-radius:16px;
+ overflow:hidden
+}
+.card-image{position:relative}
+.card-image img{
+ width:100%;
+ height:210px;
+ object-fit:cover;
+ display:block
+}
+.favorite{
+ position:absolute;
+ top:10px;
+ left:10px;
+ width:40px;
+ height:40px;
+ border:0;
+ border-radius:50%;
+ background:rgba(0,0,0,.65);
+ color:#fff;
+ font-size:22px
+}
+.favorite.active{color:#ff7080}
+.card-body{padding:16px}
+.type{
+ color:var(--gold2);
+ font-size:13px
+}
+.card-body h3{margin:3px 0}
+.muted{
+ color:var(--muted);
+ font-size:14px
+}
+.rating{
+ color:#f2ce66;
+ margin:5px 0
+}
+.card-bottom{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:8px;
+ margin-top:13px
+}
+.price{
+ color:var(--gold2);
+ font-weight:bold
+}
+.small-btn{
+ padding:8px 10px;
+ border-radius:8px;
+ border:1px solid #5b5260;
+ background:transparent;
+ color:#fff
+}
+.add-btn{
+ background:var(--gold);
+ color:#151016;
+ border:0
+}
+
+.plan{
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:18px;
+ padding:20px
+}
+.empty{
+ text-align:center;
+ color:var(--muted);
+ padding:30px
+}
+.plan-item{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ justify-content:space-between;
+ padding:13px 0;
+ border-bottom:1px solid #342d37
+}
+.plan-info{flex:1}
+.remove-btn{
+ background:#482128;
+ color:#ffabb3;
+ border:0;
+ border-radius:8px;
+ padding:7px 10px
+}
+.total{
+ display:flex;
+ justify-content:space-between;
+ padding-top:18px;
+ font-size:20px
+}
+
+.steps{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px
+}
+.step{
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:15px;
+ padding:25px;
+ text-align:center
+}
+.number{
+ width:48px;
+ height:48px;
+ border-radius:50%;
+ background:var(--gold);
+ color:#111;
+ display:grid;
+ place-items:center;
+ margin:0 auto 10px;
+ font-weight:bold
+}
+.step p{color:var(--muted);font-size:14px}
+
+.cta{
+ text-align:center;
+ background:radial-gradient(circle,rgba(216,180,90,.17),transparent 60%)
+}
+.cta h2{font-size:38px}
+.cta p{
+ color:var(--muted);
+ margin:7px 0 20px
+}
+
+footer{
+ background:#09070b;
+ padding:45px 18px 20px;
+ border-top:1px solid var(--line)
+}
+.footer-grid{
+ max-width:1200px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr 1fr;
+ gap:25px
+}
+footer h3{color:var(--gold2)}
+footer p,footer li{color:#999}
+footer ul{list-style:none}
+.copy{
+ text-align:center;
+ color:#666;
+ border-top:1px solid #29242c;
+ margin-top:30px;
+ padding-top:15px
+}
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.82);
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
+ z-index:5000
+}
+.modal.show{display:flex}
+.modal-box{
+ width:100%;
+ max-width:720px;
+ max-height:92vh;
+ overflow:auto;
+ background:#1a151e;
+ border:1px solid var(--gold);
+ border-radius:18px;
+ padding:25px;
+ position:relative
+}
+.close{
+ position:absolute;
+ left:12px;
+ top:5px;
+ background:transparent;
+ border:0;
+ color:#fff;
+ font-size:29px
+}
+.modal-box h2{
+ color:var(--gold2);
+ margin-bottom:15px
+}
+.detail-image{
+ width:100%;
+ height:240px;
+ object-fit:cover;
+ border-radius:12px;
+ margin-bottom:12px
+}
+.detail-row{
+ display:flex;
+ justify-content:space-between;
+ border-bottom:1px solid #342d37;
+ padding:9px 0
+}
+.detail-row strong{color:var(--gold2)}
+
+.field{margin:11px 0}
+.field label{
+ display:block;
+ margin-bottom:4px
+}
+.field input,.field select,.field textarea{
+ width:100%;
+ background:#100d14;
+ color:#fff;
+ border:1px solid #3b3340;
+ border-radius:8px;
+ padding:10px;
+ outline:none
+}
+.field textarea{min-height:90px}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px
+}
+.stat{
+ background:#100d14;
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:18px;
+ text-align:center
+}
+.stat b{
+ font-size:25px;
+ color:var(--gold2);
+ display:block
+}
+
+.badge{
+ display:inline-block;
+ padding:3px 9px;
+ border-radius:20px;
+ background:#332b16;
+ color:var(--gold2);
+ font-size:12px
+}
+.badge.green{
+ background:#183522;
+ color:#91e5a7
+}
+.badge.red{
+ background:#422026;
+ color:#ff9aa6
+}
+
+.tabs{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-bottom:20px
+}
+.tab{
+ padding:9px 13px;
+ border-radius:8px;
+ border:1px solid var(--line);
+ background:transparent;
+ color:#fff
+}
+.tab.active{
+ background:var(--gold);
+ color:#111
+}
+
+.booking-card{
+ border:1px solid #38303b;
+ border-radius:12px;
+ padding:13px;
+ margin-top:10px;
+ background:#151119
+}
+.booking-actions{
+ display:flex;
+ gap:7px;
+ margin-top:10px;
+ flex-wrap:wrap
+}
+
+.toast{
+ position:fixed;
+ bottom:22px;
+ right:20px;
+ background:#26202b;
+ border:1px solid var(--gold);
+ padding:11px 16px;
+ border-radius:10px;
+ z-index:9000;
+ transform:translateY(100px);
+ opacity:0;
+ transition:.25s
+}
+.toast.show{
+ transform:translateY(0);
+ opacity:1
+}
+
+@media(max-width:900px){
+ .links{
+  display:none;
+  position:absolute;
+  top:62px;
+  right:10px;
+  left:10px;
+  background:#19141d;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:15px;
+  flex-direction:column
+ }
+ .links.open{display:flex}
+ .menu{display:block}
+ .nav-actions .nav-btn:first-child{display:none}
+ .categories{grid-template-columns:repeat(3,1fr)}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .steps{grid-template-columns:repeat(2,1fr)}
+ .footer-grid{grid-template-columns:repeat(2,1fr)}
+ .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:600px){
+ .categories,.grid,.steps{grid-template-columns:1fr 1fr}
+ .footer-grid{grid-template-columns:1fr}
+ .hero h1{font-size:44px}
+ .hero p{font-size:16px}
+ .search{flex-direction:column}
+ .card-image img{height:170px}
+ .stats{grid-template-columns:1fr 1fr}
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Eventra</h1>
-    <p>منصتك الشاملة لتنظيم وإدارة جميع المناسبات والفعاليات بسهولة احترافية</p>
-  </header>
+<header>
+<nav class="nav">
 
-  <nav>
-    <a href="#about">عن المنصة</a>
-    <a href="#services">الخدمات</a>
-    <a href="#contact">تواصل معنا</a>
-  </nav>
+<a class="logo" href="#home">✦ Eventra</a>
 
-  <div class="container">
-    <section class="hero" id="about">
-      <h2>مرحباً بكم في Eventra</h2>
-      <p>نقدم لك أفضل الأدوات والحلول لتنظيم حفلات الزفاف، المؤتمرات، وورش العمل بكفاءة عالية وبدون أي عناء.</p>
-      <a href="#contact" class="btn">ابدأ تنظيم فعاليتك الان</a>
-    </section>
+<button class="menu" onclick="toggleMenu()">☰</button>
 
-    <section id="services">
-      <h2 style="text-align: center; margin-bottom: 1.5rem; color: #1e3c72;">خدماتنا المميزة</h2>
-      <div class="services-grid">
-        <div class="card">
-          <h3>إدارة الحجوزات</h3>
-          <p>تنظيم حجوزات القاعات والضيوف وتتبع تأكيدات الحضور بمرونة عالية.</p>
-        </div>
-        <div class="card">
-          <h3>تنسيق الديكورات</h3>
-          <p>ربطك بأفضل المنسقين والمزودين لضمان أفضل تجربة لمناسبتك.</p>
-        </div>
-        <div class="card">
-          <h3>جدولة الفعاليات</h3>
-          <p>بناء جدول زمني محكم لكل تفاصيل الحفل من البداية وحتى النهاية.</p>
-        </div>
-      </div>
-    </section>
-  </div>
+<ul class="links" id="links">
+<li><a href="#home">الرئيسية</a></li>
+<li><a href="#services">الخدمات</a></li>
+<li><a href="#plan">خطتي</a></li>
+<li><a href="#how">كيف تعمل؟</a></li>
+</ul>
 
-  <footer id="contact">
-    <p>جميع الحقوق محفوظة © Eventra 2026</p>
-  </footer>
+<div class="nav-actions">
+<button class="nav-btn" onclick="openAccount()">👤 حسابي</button>
+<button class="nav-btn" onclick="openBooking()">📅 احجزي</button>
+</div>
+
+</nav>
+</header>
+
+
+<section class="hero" id="home">
+<div class="container hero-content">
+
+<div class="gold">✦ أهلاً بكِ في Eventra</div>
+
+<h1>
+كل مناسبتج
+<br>
+<span class="gold">بمكان واحد ✨</span>
+</h1>
+
+<p>
+من القاعة إلى الكوشة والتصوير والصالون والطعام،
+اختاري كل تفاصيل مناسبتج من مكان واحد.
+</p>
+
+<div class="actions">
+<button class="btn gold-btn" onclick="scrollToSection('services')">
+ابدئي التخطيط
+</button>
+
+<button class="btn outline" onclick="openBooking()">
+احجزي مناسبتج
+</button>
+</div>
+
+</div>
+</section>
+
+
+<section class="dark">
+<div class="container">
+
+<div class="title">
+<small>اختاري الخدمة</small>
+<h2>شنو تحتاجين لمناسبتج؟</h2>
+<p>كل الخدمات بمكان واحد</p>
+</div>
+
+<div class="categories">
+
+<div class="category" onclick="filterType('قاعة')">
+<span class="category-icon">🏛️</span>
+القاعات
+</div>
+
+<div class="category" onclick="filterType('تصوير')">
+<span class="category-icon">📸</span>
+التصوير
+</div>
+
+<div class="category" onclick="filterType('كوشة')">
+<span class="category-icon">🌸</span>
+الكوشة
+</div>
+
+<div class="category" onclick="filterType('صالون')">
+<span class="category-icon">💄</span>
+الصالونات
+</div>
+
+<div class="category" onclick="filterType('طعام')">
+<span class="category-icon">🍽️</span>
+الطعام
+</div>
+
+<div class="category" onclick="filterType('منتجع')">
+<span class="category-icon">🏝️</span>
+المنتجعات
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section>
+<div class="container">
+
+<div class="search">
+
+<input
+id="searchInput"
+type="text"
+placeholder="🔎 ابحثي عن الخدمة..."
+oninput="renderServices()"
+>
+
+<select id="cityFilter" onchange="renderServices()">
+<option value="">كل المحافظات</option>
+<option>كربلاء</option>
+<option>بغداد</option>
+<option>النجف</option>
+<option>البصرة</option>
+</select>
+
+<select id="typeFilter" onchange="renderServices()">
+<option value="">كل الخدمات</option>
+<option>قاعة</option>
+<option>تصوير</option>
+<option>كوشة</option>
+<option>صالون</option>
+<option>طعام</option>
+<option>منتجع</option>
+</select>
+
+</div>
+</div>
+</section>
+
+
+<section class="dark" id="services">
+<div class="container">
+
+<div class="title">
+<small>استكشفي</small>
+<h2>الخدمات المتاحة</h2>
+<p>اختاري الخدمة اللي تناسب مناسبتج</p>
+</div>
+
+<div class="grid" id="serviceGrid"></div>
+
+</div>
+</section>
+
+
+<section id="plan">
+<div class="container">
+
+<div class="title">
+<small>مناسبتج</small>
+<h2>خطتي ✨</h2>
+<p>الخدمات التي اخترتيها</p>
+</div>
+
+<div class="plan" id="planBox"></div>
+
+</div>
+</section>
+
+
+<section class="dark" id="how">
+<div class="container">
+
+<div class="title">
+<small>بكل سهولة</small>
+<h2>شلون تشتغل Eventra؟</h2>
+</div>
+
+<div class="steps">
+
+<div class="step">
+<div class="number">1</div>
+<h3>اختاري المناسبة</h3>
+<p>زفاف، خطوبة، تخرج، عيد ميلاد وغيرها.</p>
+</div>
+
+<div class="step">
+<div class="number">2</div>
+<h3>اختاري الخدمات</h3>
+<p>قاعة وتصوير وكوشة وطعام وصالون.</p>
+</div>
+
+<div class="step">
+<div class="number">3</div>
+<h3>سوي خطتج</h3>
+<p>اجمعي اختياراتج واحسبي المجموع.</p>
+</div>
+
+<div class="step">
+<div class="number">4</div>
+<h3>أرسلي الحجز</h3>
+<p>أرسلي تفاصيل مناسبتج وانتظري التأكيد.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="cta">
+<div class="container">
+
+<h2>جاهزة تبدين التخطيط؟ ✨</h2>
+<p>خلي Eventra ترتب لج التفاصيل.</p>
+
+<button class="btn gold-btn" onclick="openBooking()">
+ابدئي الآن
+</button>
+
+</div>
+</section>
+
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<a class="logo">✦ Eventra</a>
+<p>
+منصة لتنظيم المناسبات تجمع الخدمات
+ومقدمي الخدمات في مكان واحد.
+</p>
+</div>
+
+<div>
+<h3>المنصة</h3>
+<ul>
+<li>الرئيسية</li>
+<li>الخدمات</li>
+<li>خطتي</li>
+<li>حجوزاتي</li>
+</ul>
+</div>
+
+<div>
+<h3>الخدمات</h3>
+<ul>
+<li>القاعات</li>
+<li>التصوير</li>
+<li>الكوشة</li>
+<li>الصالونات</li>
+</ul>
+</div>
+
+<div>
+<h3>تواصل</h3>
+<ul>
+<li>📞 0770 000 0000</li>
+<li>📧 info@eventra.com</li>
+<li>📍 العراق</li>
+</ul>
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 Eventra — جميع الحقوق محفوظة
+</div>
+
+</footer>
+
+
+<!-- تفاصيل الخدمة -->
+
+<div class="modal" id="detailsModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal('detailsModal')">×</button>
+
+<img id="detailImage" class="detail-image">
+
+<h2 id="detailName"></h2>
+
+<p id="detailDescription" class="muted"></p>
+
+<div class="detail-row">
+<span>الموقع</span>
+<strong id="detailCity"></strong>
+</div>
+
+<div class="detail-row">
+<span>نوع الخدمة</span>
+<strong id="detailType"></strong>
+</div>
+
+<div class="detail-row">
+<span>السعر</span>
+<strong id="detailPrice"></strong>
+</div>
+
+<div class="detail-row">
+<span>التفاصيل</span>
+<strong id="detailCapacity"></strong>
+</div>
+
+<br>
+
+<button id="detailAdd" class="btn gold-btn">
++ أضيفي إلى خطتي
+</button>
+
+</div>
+</div>
+
+
+<!-- الحجز -->
+
+<div class="modal" id="bookingModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal('bookingModal')">×</button>
+
+<h2>طلب حجز Eventra ✨</h2>
+
+<form onsubmit="submitBooking(event)">
+
+<div class="field">
+<label>الاسم</label>
+<input id="bookingName" required>
+</div>
+
+<div class="field">
+<label>رقم الهاتف</label>
+<input id="bookingPhone" type="tel" required>
+</div>
+
+<div class="field">
+<label>نوع المناسبة</label>
+
+<select id="bookingEvent" required>
+<option value="">اختاري</option>
+<option>زفاف</option>
+<option>خطوبة</option>
+<option>عقد قران</option>
+<option>تخرج</option>
+<option>عيد ميلاد</option>
+<option>حفلة</option>
+<option>أخرى</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>تاريخ المناسبة</label>
+<input id="bookingDate" type="date" required>
+</div>
+
+<div class="field">
+<label>عدد الأشخاص</label>
+<input id="bookingGuests" type="number" min="1" required>
+</div>
+
+<div class="field">
+<label>ملاحظات</label>
+<textarea id="bookingNotes"></textarea>
+</div>
+
+<div class="plan" id="bookingSummary"></div>
+
+<br>
+
+<button class="btn gold-btn" style="width:100%">
+إرسال طلب الحجز
+</button>
+
+</form>
+
+</div>
+</div>
+
+
+<!-- الحساب -->
+
+<div class="modal" id="accountModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal('accountModal')">×</button>
+
+<div id="accountContent"></div>
+
+</div>
+</div>
+
+
+<!-- إضافة خدمة -->
+
+<div class="modal" id="providerModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal('providerModal')">×</button>
+
+<h2>إضافة خدمة 🏪</h2>
+
+<form onsubmit="addProviderService(event)">
+
+<div class="field">
+<label>اسم الخدمة</label>
+<input id="providerName" required>
+</div>
+
+<div class="field">
+<label>نوع الخدمة</label>
+
+<select id="providerType">
+<option>قاعة</option>
+<option>تصوير</option>
+<option>كوشة</option>
+<option>صالون</option>
+<option>طعام</option>
+<option>منتجع</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>المحافظة</label>
+<input id="providerCity" required>
+</div>
+
+<div class="field">
+<label>السعر</label>
+<input id="providerPrice" type="number" required>
+</div>
+
+<div class="field">
+<label>رابط الصورة</label>
+<input id="providerImage" placeholder="https://...">
+</div>
+
+<div class="field">
+<label>الوصف</label>
+<textarea id="providerDescription"></textarea>
+</div>
+
+<button class="btn gold-btn" style="width:100%">
+إضافة الخدمة
+</button>
+
+</form>
+
+</div>
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* ==================================
+   بيانات Eventra التجريبية
+================================== */
+
+let services=[
+{
+id:1,
+name:"قاعة ليالي كربلاء",
+type:"قاعة",
+city:"كربلاء",
+price:1500000,
+image:"https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80",
+description:"قاعة أنيقة ومجهزة للمناسبات والأعراس.",
+capacity:"300 شخص"
+},
+{
+id:2,
+name:"قاعة روز بغداد",
+type:"قاعة",
+city:"بغداد",
+price:2000000,
+image:"https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=80",
+description:"قاعة فخمة بتصميم عصري.",
+capacity:"400 شخص"
+},
+{
+id:3,
+name:"ستوديو لقطات",
+type:"تصوير",
+city:"كربلاء",
+price:500000,
+image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80",
+description:"تصوير فوتوغرافي وفيديو للمناسبات.",
+capacity:"فريق تصوير"
+},
+{
+id:4,
+name:"صالون لمسة",
+type:"صالون",
+city:"النجف",
+price:300000,
+image:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80",
+description:"تجهيز العروس والمناسبات.",
+capacity:"خدمة تجميل"
+},
+{
+id:5,
+name:"كوشة جولدن",
+type:"كوشة",
+city:"كربلاء",
+price:750000,
+image:"https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80",
+description:"تصاميم كوشات عصرية وفخمة.",
+capacity:"حسب التصميم"
+},
+{
+id:6,
+name:"بوفيه الذوق",
+type:"طعام",
+city:"بغداد",
+price:15000,
+image:"https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1000&q=80",
+description:"خدمة ضيافة وبوفيه للمناسبات.",
+capacity:"لشخص واحد"
+},
+{
+id:7,
+name:"منتجع النخيل",
+type:"منتجع",
+city:"البصرة",
+price:900000,
+image:"https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1000&q=80",
+description:"مكان مناسب للجلسات والمناسبات الخاصة.",
+capacity:"حسب الحجز"
+}
+];
+
+let plan=[];
+let bookings=[];
+let favorites=[];
+let currentUser=null;
+
+
+/* ==================================
+   تحميل البيانات
+================================== */
+
+try{
+
+plan=JSON.parse(
+localStorage.getItem("eventra_plan") || "[]"
+);
+
+bookings=JSON.parse(
+localStorage.getItem("eventra_bookings") || "[]"
+);
+
+favorites=JSON.parse(
+localStorage.getItem("eventra_favorites") || "[]"
+);
+
+currentUser=JSON.parse(
+localStorage.getItem("eventra_user") || "null"
+);
+
+}catch(e){}
+
+
+/* ==================================
+   حفظ البيانات
+================================== */
+
+function saveData(){
+
+localStorage.setItem(
+"eventra_plan",
+JSON.stringify(plan)
+);
+
+localStorage.setItem(
+"eventra_bookings",
+JSON.stringify(bookings)
+);
+
+localStorage.setItem(
+"eventra_favorites",
+JSON.stringify(favorites)
+);
+
+localStorage.setItem(
+"eventra_user",
+JSON.stringify(currentUser)
+);
+
+}
+
+
+/* ==================================
+   أدوات
+================================== */
+
+function money(number){
+
+return Number(number).toLocaleString("ar-IQ")+" د.ع";
+
+}
+
+function toggleMenu(){
+
+document.getElementById("links").classList.toggle("open");
+
+}
+
+function scrollToSection(id){
+
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function openModal(id){
+
+document.getElementById(id).classList.add("show");
+
+}
+
+function closeModal(id){
+
+document.getElementById(id).classList.remove("show");
+
+}
+
+function showToast(message){
+
+const toast=document.getElementById("toast");
+
+toast.textContent=message;
+
+toast.classList.add("show");
+
+setTimeout(function(){
+
+toast.classList.remove("show");
+
+},2500);
+
+}
+
+
+/* ==================================
+   الخدمات
+================================== */
+
+function renderServices(){
+
+const grid=document.getElementById("serviceGrid");
+
+const search=
+document.getElementById("searchInput").value
+.toLowerCase()
+.trim();
+
+const city=
+document.getElementById("cityFilter").value;
+
+const type=
+document.getElementById("typeFilter").value;
+
+const result=services.filter(function(service){
+
+return(
+
+(!search ||
+service.name.toLowerCase().includes(search) ||
+service.description.toLowerCase().includes(search))
+
+&&
+
+(!city || service.city===city)
+
+&&
+
+(!type || service.type===type)
+
+);
+
+});
+
+
+if(!result.length){
+
+grid.innerHTML=`
+<div class="empty" style="grid-column:1/-1">
+ما لكيت خدمة مطابقة للبحث 🔎
+</div>
+`;
+
+return;
+
+}
+
+
+grid.innerHTML=result.map(function(service){
+
+const fav=favorites.includes(service.id);
+
+return`
+
+<div class="card">
+
+<div class="card-image">
+
+<img
+src="${service.image}"
+onerror="this.src='https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80'"
+>
+
+<button
+class="favorite ${fav?"active":""}"
+onclick="toggleFavorite(${service.id})">
+
+${fav?"♥":"♡"}
+
+</button>
+
+</div>
+
+<div class="card-body">
+
+<div class="type">
+${service.type}
+</div>
+
+<h3>
+${service.name}
+</h3>
+
+<div class="muted">
+📍 ${service.city}
+</div>
+
+<div class="rating">
+★★★★★
+</div>
+
+<p class="muted">
+${service.description}
+</p>
+
+<div class="card-bottom">
+
+<span class="price">
+${money(service.price)}
+</span>
+
+<div>
+
+<button
+class="small-btn"
+onclick="showDetails(${service.id})">
+التفاصيل
+</button>
+
+<button
+class="small-btn add-btn"
+onclick="addToPlan(${service.id})">
++ خطتي
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+function filterType(type){
+
+document.getElementById("typeFilter").value=type;
+
+renderServices();
+
+scrollToSection("services");
+
+}
+
+
+function showDetails(id){
+
+const service=
+services.find(function(x){
+return x.id===id;
+});
+
+if(!service)return;
+
+document.getElementById("detailImage").src=service.image;
+
+document.getElementById("detailName").textContent=
+service.name;
+
+document.getElementById("detailDescription").textContent=
+service.description;
+
+document.getElementById("detailCity").textContent=
+service.city;
+
+document.getElementById("detailType").textContent=
+service.type;
+
+document.getElementById("detailPrice").textContent=
+money(service.price);
+
+document.getElementById("detailCapacity").textContent=
+service.capacity;
+
+document.getElementById("detailAdd").onclick=function(){
+
+addToPlan(service.id);
+
+closeModal("detailsModal");
+
+};
+
+openModal("detailsModal");
+
+}
+
+
+/* ==================================
+   المفضلة
+================================== */
+
+function toggleFavorite(id){
+
+if(favorites.includes(id)){
+
+favorites=favorites.filter(function(x){
+return x!==id;
+});
+
+showToast("انحذفت من المفضلة");
+
+}else{
+
+favorites.push(id);
+
+showToast("انضافت للمفضلة ❤️");
+
+}
+
+saveData();
+
+renderServices();
+
+}
+
+
+/* ==================================
+   خطتي
+================================== */
+
+function addToPlan(id){
+
+const service=
+services.find(function(x){
+return x.id===id;
+});
+
+if(!service)return;
+
+if(plan.some(function(x){
+return x.id===id;
+})){
+
+showToast("الخدمة موجودة بخطتج ❤️");
+
+return;
+
+}
+
+plan.push(service);
+
+saveData();
+
+renderPlan();
+
+showToast("تمت إضافة الخدمة ✨");
+
+}
+
+
+function removeFromPlan(id){
+
+plan=plan.filter(function(x){
+return x.id!==id;
+});
+
+saveData();
+
+renderPlan();
+
+showToast("تم حذف الخدمة");
+
+}
+
+
+function clearPlan(){
+
+plan=[];
+
+saveData();
+
+renderPlan();
+
+showToast("تم مسح الخطة");
+
+}
+
+
+function totalPlan(){
+
+return plan.reduce(function(total,item){
+
+return total+Number(item.price);
+
+},0);
+
+}
+
+
+function renderPlan(){
+
+const box=document.getElementById("planBox");
+
+if(!plan.length){
+
+box.innerHTML=`
+<div class="empty">
+
+لسه ما اخترتي أي خدمة ❤️
+
+<br><br>
+
+اختاري الخدمات من الأعلى.
+
+</div>
+`;
+
+return;
+
+}
+
+
+box.innerHTML=`
+
+${plan.map(function(item){
+
+return`
+
+<div class="plan-item">
+
+<div class="plan-info">
+
+<strong>
+${item.name}
+</strong>
+
+<div class="muted">
+${item.type} • ${item.city}
+</div>
+
+</div>
+
+<span class="price">
+${money(item.price)}
+</span>
+
+<button
+class="remove-btn"
+onclick="removeFromPlan(${item.id})">
+حذف
+</button>
+
+</div>
+
+`;
+
+}).join("")}
+
+<div class="total">
+
+<span>
+المجموع التقريبي
+</span>
+
+<strong class="gold">
+${money(totalPlan())}
+</strong>
+
+</div>
+
+<br>
+
+<button
+class="btn gold-btn"
+onclick="openBooking()">
+إرسال طلب الحجز
+</button>
+
+<button
+class="btn outline"
+onclick="clearPlan()">
+مسح الخطة
+</button>
+
+`;
+
+}
+
+
+/* ==================================
+   الحجز
+================================== */
+
+function openBooking(){
+
+renderBookingSummary();
+
+openModal("bookingModal");
+
+}
+
+
+function renderBookingSummary(){
+
+const box=document.getElementById("bookingSummary");
+
+if(!plan.length){
+
+box.innerHTML=`
+<div class="empty">
+ما اخترتي خدمات بعد.
+</div>
+`;
+
+return;
+
+}
+
+box.innerHTML=`
+
+<strong class="gold">
+خدمات مناسبتج
+</strong>
+
+${plan.map(function(item){
+
+return`
+
+<div class="plan-item">
+
+<span>
+${item.name}
+</span>
+
+<span class="price">
+${money(item.price)}
+</span>
+
+</div>
+
+`;
+
+}).join("")}
+
+<div class="total">
+
+<span>
+المجموع
+</span>
+
+<strong class="gold">
+${money(totalPlan())}
+</strong>
+
+</div>
+
+`;
+
+}
+
+
+function submitBooking(event){
+
+event.preventDefault();
+
+const booking={
+
+id:Date.now(),
+
+customerName:
+document.getElementById("bookingName").value,
+
+phone:
+document.getElementById("bookingPhone").value,
+
+eventType:
+document.getElementById("bookingEvent").value,
+
+date:
+document.getElementById("bookingDate").value,
+
+guests:
+document.getElementById("bookingGuests").value,
+
+notes:
+document.getElementById("bookingNotes").value,
+
+services:
+plan.map(function(item){
+
+return{
+
+name:item.name,
+type:item.type,
+price:item.price
+
+};
+
+}),
+
+total:totalPlan(),
+
+status:"قيد المراجعة",
+
+created:
+new Date().toLocaleDateString("ar-IQ")
+
+};
+
+bookings.push(booking);
+
+saveData();
+
+event.target.reset();
+
+closeModal("bookingModal");
+
+showToast("تم إرسال طلب الحجز بنجاح ✨");
+
+}
+
+
+/* ==================================
+   الحساب
+================================== */
+
+function openAccount(){
+
+renderAccount();
+
+openModal("accountModal");
+
+}
+
+
+function renderAccount(){
+
+const box=document.getElementById("accountContent");
+
+if(!currentUser){
+
+box.innerHTML=`
+
+<h2>
+حساب Eventra 👤
+</h2>
+
+<p class="muted">
+سجلي دخول أو أنشئي حساب جديد.
+</p>
+
+<br>
+
+<div class="actions">
+
+<button
+class="btn gold-btn"
+onclick="showRegister()">
+إنشاء حساب
+</button>
+
+<button
+class="btn outline"
+onclick="showLogin()">
+تسجيل الدخول
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const myBookings=
+bookings.filter(function(item){
+
+return item.phone===currentUser.phone;
+
+});
+
+
+box.innerHTML=`
+
+<h2>
+أهلاً ${currentUser.name} 👋
+</h2>
+
+<p class="muted">
+${currentUser.phone}
+</p>
+
+<br>
+
+<div class="stats">
+
+<div class="stat">
+<b>${myBookings.length}</b>
+حجوزاتي
+</div>
+
+<div class="stat">
+<b>${plan.length}</b>
+خطتي
+</div>
+
+<div class="stat">
+<b>${favorites.length}</b>
+المفضلة
+</div>
+
+<div class="stat">
+<b>${currentUser.role==="provider"?"مقدم خدمة":"عميلة"}</b>
+نوع الحساب
+</div>
+
+</div>
+
+<br>
+
+${currentUser.role==="provider"
+
+?
+
+`
+<button
+class="btn gold-btn"
+onclick="providerDashboard()">
+🏪 لوحة مقدم الخدمة
+</button>
+`
+
+:""}
+
+<br><br>
+
+<h3 class="gold">
+حجوزاتي
+</h3>
+
+${renderCustomerBookings()}
+
+<br>
+
+<button
+class="btn outline"
+onclick="logout()">
+تسجيل الخروج
+</button>
+
+`;
+
+}
+
+
+function showRegister(){
+
+document.getElementById("accountContent").innerHTML=`
+
+<h2>
+إنشاء حساب
+</h2>
+
+<form onsubmit="register(event)">
+
+<div class="field">
+
+<label>
+الاسم
+</label>
+
+<input
+id="registerName"
+required
+>
+
+</div>
+
+<div class="field">
+
+<label>
+رقم الهاتف
+</label>
+
+<input
+id="registerPhone"
+required
+>
+
+</div>
+
+<div class="field">
+
+<label>
+نوع الحساب
+</label>
+
+<select id="registerRole">
+
+<option value="customer">
+عميلة
+</option>
+
+<option value="provider">
+مقدم خدمة
+</option>
+
+</select>
+
+</div>
+
+<button class="btn gold-btn">
+إنشاء الحساب
+</button>
+
+</form>
+
+`;
+
+}
+
+
+function showLogin(){
+
+document.getElementById("accountContent").innerHTML=`
+
+<h2>
+تسجيل الدخول
+</h2>
+
+<form onsubmit="login(event)">
+
+<div class="field">
+
+<label>
+الاسم
+</label>
+
+<input
+id="loginName"
+required
+>
+
+</div>
+
+<div class="field">
+
+<label>
+رقم الهاتف
+</label>
+
+<input
+id="loginPhone"
+required
+>
+
+</div>
+
+<button class="btn gold-btn">
+دخول
+</button>
+
+</form>
+
+`;
+
+}
+
+
+function register(event){
+
+event.preventDefault();
+
+currentUser={
+
+name:
+document.getElementById("registerName").value,
+
+phone:
+document.getElementById("registerPhone").value,
+
+role:
+document.getElementById("registerRole").value
+
+};
+
+saveData();
+
+showToast("تم إنشاء الحساب ❤️");
+
+renderAccount();
+
+}
+
+
+function login(event){
+
+event.preventDefault();
+
+currentUser={
+
+name:
+document.getElementById("loginName").value,
+
+phone:
+document.getElementById("loginPhone").value,
+
+role:"customer"
+
+};
+
+saveData();
+
+showToast("تم تسجيل الدخول ✨");
+
+renderAccount();
+
+}
+
+
+function logout(){
+
+currentUser=null;
+
+saveData();
+
+renderAccount();
+
+showToast("تم تسجيل الخروج");
+
+}
+
+
+function renderCustomerBookings(){
+
+if(!currentUser)return "";
+
+const list=
+bookings.filter(function(item){
+
+return item.phone===currentUser.phone;
+
+});
+
+if(!list.length){
+
+return`
+<div class="empty">
+ما عندج حجوزات بعد.
+</div>
+`;
+
+}
+
+return list.map(function(item){
+
+return`
+
+<div class="booking-card">
+
+<strong>
+${item.eventType}
+</strong>
+
+<div class="muted">
+📅 ${item.date}
+</div>
+
+<div class="muted">
+👥 ${item.guests} شخص
+</div>
+
+<div class="muted">
+💰 ${money(item.total)}
+</div>
+
+<div class="muted">
+الخدمات:
+${item.services.length
+?item.services.map(function(s){
+return s.name;
+}).join("، ")
+:"لا يوجد"}
+</div>
+
+<br>
+
+<span class="badge">
+${item.status}
+</span>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+/* ==================================
+   لوحة مقدم الخدمة
+================================== */
+
+function providerDashboard(){
+
+document.getElementById("accountContent").innerHTML=`
+
+<h2>
+لوحة مقدم الخدمة 🏪
+</h2>
+
+<div class="stats">
+
+<div class="stat">
+<b>${services.length}</b>
+الخدمات
+</div>
+
+<div class="stat">
+<b>${bookings.length}</b>
+الحجوزات
+</div>
+
+<div class="stat">
+<b>
+${bookings.filter(function(x){
+return x.status==="مؤكد";
+}).length}
+</b>
+المؤكدة
+</div>
+
+<div class="stat">
+<b>Eventra</b>
+المنصة
+</div>
+
+</div>
+
+<br>
+
+<div class="tabs">
+
+<button
+class="tab active"
+onclick="providerDashboard()">
+الحجوزات
+</button>
+
+<button
+class="tab"
+onclick="providerServices()">
+خدماتي
+</button>
+
+</div>
+
+<h3 class="gold">
+طلبات الحجز
+</h3>
+
+${renderAllBookings()}
+
+<br>
+
+<button
+class="btn gold-btn"
+onclick="openProviderModal()">
++ إضافة خدمة
+</button>
+
+<button
+class="btn outline"
+onclick="renderAccount()">
+رجوع للحساب
+</button>
+
+`;
+
+}
+
+
+function renderAllBookings(){
+
+if(!bookings.length){
+
+return`
+<div class="empty">
+ماكو حجوزات حالياً.
+</div>
+`;
+
+}
+
+return bookings.map(function(item){
+
+return`
+
+<div class="booking-card">
+
+<h3>
+${item.eventType}
+</h3>
+
+<p class="muted">
+👤 ${item.customerName}
+</p>
+
+<p class="muted">
+📞 ${item.phone}
+</p>
+
+<p class="muted">
+📅 ${item.date}
+</p>
+
+<p class="muted">
+👥 ${item.guests} شخص
+</p>
+
+<p class="muted">
+💰 ${money(item.total)}
+</p>
+
+<p class="muted">
+الخدمات:
+${item.services.map(function(s){
+return s.name;
+}).join("، ")||"لا يوجد"}
+</p>
+
+<p class="muted">
+📝 ${item.notes||"لا توجد ملاحظات"}
+</p>
+
+<br>
+
+<span class="badge">
+${item.status}
+</span>
+
+<div class="booking-actions">
+
+<button
+class="small-btn add-btn"
+onclick="updateBooking(${item.id},'مؤكد')">
+✓ تأكيد
+</button>
+
+<button
+class="small-btn"
+onclick="updateBooking(${item.id},'قيد المراجعة')">
+↻ قيد المراجعة
+</button>
+
+<button
+class="small-btn"
+style="background:#482128"
+onclick="updateBooking(${item.id},'مرفوض')">
+رفض
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+function updateBooking(id,status){
+
+const booking=
+bookings.find(function(x){
+return x.id===id;
+});
+
+if(!booking)return;
+
+booking.status=status;
+
+saveData();
+
+providerDashboard();
+
+showToast("تم تحديث حالة الحجز");
+
+}
+
+
+function providerServices(){
+
+document.getElementById("accountContent").innerHTML=`
+
+<h2>
+خدماتي 🏪
+</h2>
+
+${services.map(function(service){
+
+return`
+
+<div class="booking-card">
+
+<div style="display:flex;gap:12px;align-items:center">
+
+<img
+src="${service.image}"
+style="width:80px;height:65px;object-fit:cover;border-radius:8px"
+>
+
+<div>
+
+<strong>
+${service.name}
+</strong>
+
+<div class="muted">
+${service.type} • ${service.city}
+</div>
+
+<div class="price">
+${money(service.price)}
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+<br>
+
+<button
+class="btn gold-btn"
+onclick="openProviderModal()">
++ إضافة خدمة
+</button>
+
+<button
+class="btn outline"
+onclick="providerDashboard()">
+رجوع
+</button>
+
+`;
+
+}
+
+
+function openProviderModal(){
+
+openModal("providerModal");
+
+}
+
+
+function addProviderService(event){
+
+event.preventDefault();
+
+const service={
+
+id:Date.now(),
+
+name:
+document.getElementById("providerName").value,
+
+type:
+document.getElementById("providerType").value,
+
+city:
+document.getElementById("providerCity").value,
+
+price:
+Number(
+document.getElementById("providerPrice").value
+),
+
+image:
+document.getElementById("providerImage").value ||
+
+"https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80",
+
+description:
+document.getElementById("providerDescription").value ||
+
+"خدمة مميزة من Eventra.",
+
+capacity:"حسب الخدمة"
+
+};
+
+services.push(service);
+
+event.target.reset();
+
+closeModal("providerModal");
+
+renderServices();
+
+showToast("تمت إضافة الخدمة بنجاح ✨");
+
+}
+
+
+/* ==================================
+   إغلاق النوافذ
+================================== */
+
+window.onclick=function(event){
+
+if(event.target.classList.contains("modal")){
+
+event.target.classList.remove("show");
+
+}
+
+};
+
+
+/* ==================================
+   تشغيل Eventra
+================================== */
+
+renderServices();
+
+renderPlan();
+
+</script>
 
 </body>
 </html>

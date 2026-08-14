@@ -841,7 +841,7 @@ oninput="renderServices()"
 <form onsubmit="verifyAdmin(event)">
 <div class="field">
 <label>اسم المستخدم</label>
-<input id="adminUser" required autocomplete="off">
+<input id="adminUser" required autocomplete="off" autocapitalize="none">
 </div>
 <div class="field">
 <label>كلمة المرور</label>
@@ -1342,11 +1342,12 @@ openModal("adminLoginModal");
 
 function verifyAdmin(event){
 event.preventDefault();
+
+// إزالة أي مسافات زائدة وتحويل النص إلى حروف صغيرة لمنع خطأ الأحرف الكبيرة والتكست أوتو
 const userVal = document.getElementById("adminUser").value.trim().toLowerCase();
 const passVal = document.getElementById("adminPass").value.trim();
 
-// التحقق من اسم المستخدم وكلمة المرور 719698
-if(userVal === "yoysuf9896hammedah" && passVal === "719698"){
+if(userVal === "yousuf9896hameedah" && passVal === "719698"){
 isAdminLoggedIn = true;
 closeModal("adminLoginModal");
 renderAdminDashboard();

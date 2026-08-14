@@ -1342,11 +1342,11 @@ openModal("adminLoginModal");
 
 function verifyAdmin(event){
 event.preventDefault();
-const userVal = document.getElementById("adminUser").value.trim();
+const userVal = document.getElementById("adminUser").value.trim().toLowerCase();
 const passVal = document.getElementById("adminPass").value.trim();
 
-// مطابقة مباشرة لدخول الإدارة
-if(userVal === "Yoysuf9896hammedah" && passVal === "719698"){
+// التحقق من اسم المستخدم وكلمة المرور 719698
+if(userVal === "yoysuf9896hammedah" && passVal === "719698"){
 isAdminLoggedIn = true;
 closeModal("adminLoginModal");
 renderAdminDashboard();

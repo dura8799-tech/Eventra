@@ -845,11 +845,11 @@ oninput="renderServices()"
 <form onsubmit="verifyAdmin(event)">
 <div class="field">
 <label>اسم المستخدم</label>
-<input id="adminUser" required>
+<input id="adminUser" required autocomplete="off">
 </div>
 <div class="field">
 <label>كلمة المرور</label>
-<input id="adminPass" type="password" required>
+<input id="adminPass" type="password" required autocomplete="off">
 </div>
 <br>
 <button class="btn gold-btn" style="width:100%">دخول لوحة التحكم</button>
@@ -912,12 +912,6 @@ oninput="renderServices()"
 <div class="toast" id="toast"></div>
 
 <script>
-/* ==================================
-   معلومات الدخول للإدارة المصححة
-================================== */
-const ADMIN_USER_CRED = "Yousuf9896hammeedah"; 
-const ADMIN_PASS_CRED = "719698"; 
-
 let isAdminLoggedIn = false;
 
 /* ==================================
@@ -1310,7 +1304,7 @@ renderAccount();
 
 function login(event){
 event.preventDefault();
-currentUser={name:document.getElementById("loginName").value,phone:document.getElementById("loginPhone").value};
+currentUser={name:document.getElementById("registerName").value,phone:document.getElementById("registerPhone").value};
 saveData();
 showToast("تم تسجيل الدخول ✨");
 renderAccount();
@@ -1342,7 +1336,7 @@ return`
 }
 
 /* ==================================
-   خاص بالإدارة والتحكم 🔐
+   خاص بالإدارة والتحكم 🔐 (التحقق المباشر الصارم)
 ================================== */
 function openAdminModal(){
 if(isAdminLoggedIn){
@@ -1355,10 +1349,11 @@ openModal("adminLoginModal");
 
 function verifyAdmin(event){
 event.preventDefault();
-const u = document.getElementById("adminUser").value;
-const p = document.getElementById("adminPass").value;
+const u = document.getElementById("adminUser").value.trim();
+const p = document.getElementById("adminPass").value.trim();
 
-if(u === ADMIN_USER_CRED && p === ADMIN_PASS_CRED){
+// اسم المستخدم وكلمة المرور المحددة بشرط مباشر
+if(u === "Yousuf9896hammeedah" && p === "719698"){
 isAdminLoggedIn = true;
 closeModal("adminLoginModal");
 renderAdminDashboard();

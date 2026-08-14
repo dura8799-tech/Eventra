@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eventra | منصة تنظيم المناسبات</title>
+<title>Eventra | كربلاء المقدسة</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -516,7 +516,7 @@ footer ul{list-style:none}
 <section class="hero" id="home">
 <div class="container hero-content">
 
-<div class="gold">✦ أهلاً بكِ في Eventra</div>
+<div class="gold">✦ أهلاً بكِ في Eventra - كربلاء المقدسة</div>
 
 <h1>
 كل مناسبتج
@@ -525,8 +525,8 @@ footer ul{list-style:none}
 </h1>
 
 <p>
-من القاعة إلى الكوشة والتصوير والصالون والطعام،
-اختاري كل تفاصيل مناسبتج من مكان واحد.
+من القاعة إلى الكوشة والتصوير والصالون والطعام في كربلاء،
+اختاري كل تفاصيل مناسبتج بكل سهولة.
 </p>
 
 <div class="actions">
@@ -547,7 +547,7 @@ footer ul{list-style:none}
 
 <div class="title">
 <small>اختاري الخدمة</small>
-<h2>شنو تحتاجين لمناسبتج؟</h2>
+<h2>شنو تحتاجين لمناسبتج في كربلاء؟</h2>
 <p>كل الخدمات بمكان واحد</p>
 </div>
 
@@ -599,12 +599,8 @@ placeholder="🔎 ابحثي عن الخدمة..."
 oninput="renderServices()"
 >
 
-<select id="cityFilter" onchange="renderServices()">
-<option value="">كل المحافظات</option>
-<option>كربلاء</option>
-<option>بغداد</option>
-<option>النجف</option>
-<option>البصرة</option>
+<select id="cityFilter">
+<option value="كربلاء">كربلاء المقدسة</option>
 </select>
 
 <select id="typeFilter" onchange="renderServices()">
@@ -626,7 +622,7 @@ oninput="renderServices()"
 
 <div class="title">
 <small>استكشفي</small>
-<h2>الخدمات المتاحة</h2>
+<h2>الخدمات المتاحة في كربلاء</h2>
 <p>اختاري الخدمة اللي تناسب مناسبتج</p>
 </div>
 
@@ -708,7 +704,7 @@ oninput="renderServices()"
 <a class="logo">✦ Eventra</a>
 <p>
 منصة لتنظيم المناسبات تجمع الخدمات
-ومقدمي الخدمات في مكان واحد.
+ومقدمي الخدمات في كربلاء المقدسة.
 </p>
 </div>
 
@@ -737,7 +733,7 @@ oninput="renderServices()"
 <ul>
 <li>📞 0770 000 0000</li>
 <li>📧 info@eventra.com</li>
-<li>📍 العراق</li>
+<li>📍 كربلاء المقدسة</li>
 </ul>
 </div>
 
@@ -758,7 +754,7 @@ oninput="renderServices()"
 <p id="detailDescription" class="muted"></p>
 <div class="detail-row">
 <span>الموقع</span>
-<strong id="detailCity"></strong>
+<strong id="detailCity">كربلاء</strong>
 </div>
 <div class="detail-row">
 <span>نوع الخدمة</span>
@@ -888,7 +884,7 @@ oninput="renderServices()"
 </div>
 <div class="field">
 <label>المحافظة</label>
-<input id="providerCity" required>
+<input id="providerCity" value="كربلاء" readonly>
 </div>
 <div class="field">
 <label>السعر</label>
@@ -915,7 +911,7 @@ oninput="renderServices()"
 let isAdminLoggedIn = false;
 
 /* ==================================
-   بيانات Eventra
+   بيانات Eventra (كربلاء المقدسة)
 ================================== */
 let services=[
 {
@@ -930,17 +926,17 @@ capacity:"300 شخص"
 },
 {
 id:2,
-name:"قاعة روز بغداد",
+name:"قاعة قصر الفخامة",
 type:"قاعة",
-city:"بغداد",
-price:2000000,
+city:"كربلاء",
+price:1800000,
 image:"https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=80",
-description:"قاعة فخمة بتصميم عصري.",
+description:"قاعة فخمة بتصميم عصري وإضاءة مميزة.",
 capacity:"400 شخص"
 },
 {
 id:3,
-name:"ستوديو لقطات",
+name:"ستوديو لقطات كربلاء",
 type:"تصوير",
 city:"كربلاء",
 price:500000,
@@ -950,42 +946,42 @@ capacity:"فريق تصوير"
 },
 {
 id:4,
-name:"صالون لمسة",
+name:"صالون لمسة الجمال",
 type:"صالون",
-city:"النجف",
+city:"كربلاء",
 price:300000,
 image:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80",
-description:"تجهيز العروس والمناسبات.",
+description:"تجهيز العروس والمناسبات بأحدث الموديلات.",
 capacity:"خدمة تجميل"
 },
 {
 id:5,
-name:"كوشة جولدن",
+name:"كوشة جولدن كربلاء",
 type:"كوشة",
 city:"كربلاء",
 price:750000,
 image:"https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80",
-description:"تصاميم كوشات عصرية وفخمة.",
+description:"تصاميم كوشات عصرية وفخمة بالورد الطبيعي.",
 capacity:"حسب التصميم"
 },
 {
 id:6,
-name:"بوفيه الذوق",
+name:"بوفيه الكرم الكربلائي",
 type:"طعام",
-city:"بغداد",
+city:"كربلاء",
 price:15000,
 image:"https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1000&q=80",
-description:"خدمة ضيافة وبوفيه للمناسبات.",
+description:"خدمة ضيافة وبوفيه مفتوح فاخر للمناسبات.",
 capacity:"لشخص واحد"
 },
 {
 id:7,
-name:"منتجع النخيل",
+name:"منتجع جاردينيا",
 type:"منتجع",
-city:"البصرة",
+city:"كربلاء",
 price:900000,
 image:"https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1000&q=80",
-description:"مكان مناسب للجلسات والمناسبات الخاصة.",
+description:"مكان مناسب للجلسات والمناسبات والاحتفالات الخاصة.",
 capacity:"حسب الحجز"
 }
 ];
@@ -1042,13 +1038,11 @@ setTimeout(function(){ toast.classList.remove("show"); },2500);
 function renderServices(){
 const grid=document.getElementById("serviceGrid");
 const search=document.getElementById("searchInput").value.toLowerCase().trim();
-const city=document.getElementById("cityFilter").value;
 const type=document.getElementById("typeFilter").value;
 
 const result=services.filter(function(service){
 return(
 (!search || service.name.toLowerCase().includes(search) || service.description.toLowerCase().includes(search)) &&
-(!city || service.city===city) &&
 (!type || service.type===type)
 );
 });
@@ -1069,7 +1063,7 @@ return`
 <div class="card-body">
 <div class="type">${service.type}</div>
 <h3>${service.name}</h3>
-<div class="muted">📍 ${service.city}</div>
+<div class="muted">📍 كربلاء المقدسة</div>
 <div class="rating">★★★★★</div>
 <p class="muted">${service.description}</p>
 <div class="card-bottom">
@@ -1097,7 +1091,6 @@ if(!service)return;
 document.getElementById("detailImage").src=service.image;
 document.getElementById("detailName").textContent=service.name;
 document.getElementById("detailDescription").textContent=service.description;
-document.getElementById("detailCity").textContent=service.city;
 document.getElementById("detailType").textContent=service.type;
 document.getElementById("detailPrice").textContent=money(service.price);
 document.getElementById("detailCapacity").textContent=service.capacity;
@@ -1163,7 +1156,7 @@ return`
 <div class="plan-item">
 <div class="plan-info">
 <strong>${item.name}</strong>
-<div class="muted">${item.type} • ${item.city}</div>
+<div class="muted">${item.type} • كربلاء</div>
 </div>
 <span class="price">${money(item.price)}</span>
 <button class="remove-btn" onclick="removeFromPlan(${item.id})">حذف</button>
@@ -1304,7 +1297,7 @@ renderAccount();
 
 function login(event){
 event.preventDefault();
-currentUser={name:document.getElementById("registerName").value,phone:document.getElementById("registerPhone").value};
+currentUser={name:document.getElementById("loginName").value,phone:document.getElementById("loginPhone").value};
 saveData();
 showToast("تم تسجيل الدخول ✨");
 renderAccount();
@@ -1336,7 +1329,7 @@ return`
 }
 
 /* ==================================
-   خاص بالإدارة والتحكم 🔐 (التحقق المباشر الصارم)
+   دخول الإدارة والتحكم المباشر 🔐
 ================================== */
 function openAdminModal(){
 if(isAdminLoggedIn){
@@ -1349,11 +1342,11 @@ openModal("adminLoginModal");
 
 function verifyAdmin(event){
 event.preventDefault();
-const u = document.getElementById("adminUser").value.trim();
-const p = document.getElementById("adminPass").value.trim();
+const userVal = document.getElementById("adminUser").value.trim();
+const passVal = document.getElementById("adminPass").value.trim();
 
-// اسم المستخدم وكلمة المرور المحددة بشرط مباشر
-if(u === "Yousuf9896hammeedah" && p === "719698"){
+// مطابقة مباشرة لدخول الإدارة
+if(userVal === "Yoysuf9896hammedah" && passVal === "719698"){
 isAdminLoggedIn = true;
 closeModal("adminLoginModal");
 renderAdminDashboard();
@@ -1368,7 +1361,7 @@ function renderAdminDashboard(){
 const box = document.getElementById("adminDashboardContent");
 box.innerHTML=`
 <h2>لوحة التحكم الإدارية 👑</h2>
-<p class="muted">تحكمي بالخدمات والطلبات الخاصة بـ Eventra</p>
+<p class="muted">إدارة خدمات وحجوزات Eventra في كربلاء المقدسة</p>
 <br>
 <div class="stats">
 <div class="stat"><b>${services.length}</b>الخدمات</div>
@@ -1435,7 +1428,7 @@ return`
 <img src="${service.image}" style="width:70px;height:55px;object-fit:cover;border-radius:8px">
 <div>
 <strong>${service.name}</strong>
-<div class="muted">${service.type} • ${service.city}</div>
+<div class="muted">${service.type} • كربلاء</div>
 <div class="price">${money(service.price)}</div>
 </div>
 </div>
@@ -1472,7 +1465,7 @@ const service={
 id:Date.now(),
 name:document.getElementById("providerName").value,
 type:document.getElementById("providerType").value,
-city:document.getElementById("providerCity").value,
+city:"كربلاء",
 price:Number(document.getElementById("providerPrice").value),
 image:document.getElementById("providerImage").value || "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80",
 description:document.getElementById("providerDescription").value || "خدمة مميزة من Eventra.",
